@@ -11,7 +11,7 @@ export function IntroSection() {
           <div className="relative order-2 lg:order-1">
             <div className="relative image-hover rounded-sm overflow-hidden shadow-elevated">
               <img
-                src={realGallery5}
+                src={realGallery8}
                 alt="Fibre sculptures at Devi Shilpalaya workshop"
                 className="w-full aspect-square object-cover"
               />
