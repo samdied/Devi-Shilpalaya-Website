@@ -2,26 +2,24 @@ import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
-import gallery5 from "@/assets/gallery-5.jpg";
-import gallery6 from "@/assets/gallery-6.jpg";
-import workshopImage from "@/assets/workshop.jpg";
-import heroImage from "@/assets/hero-sculpture.jpg";
-import craftsmanImage from "@/assets/craftsman-hands.jpg";
+
+// Real images from Devi Shilpalaya's JustDial listing
+import realGallery1 from "@/assets/real-gallery-1.jpg";
+import realGallery2 from "@/assets/real-gallery-2.jpg";
+import realGallery3 from "@/assets/real-gallery-3.jpg";
+import realGallery4 from "@/assets/real-gallery-4.jpg";
+import realGallery5 from "@/assets/real-gallery-5.jpg";
+import realGallery6 from "@/assets/real-gallery-6.jpg";
+import realGallery7 from "@/assets/real-gallery-7.jpg";
 
 const galleryItems = [
-  { id: 1, image: gallery1, title: "Divine Assembly", category: "Religious" },
-  { id: 2, image: gallery2, title: "Lord Ganesha", category: "Religious" },
-  { id: 3, image: gallery3, title: "Goddess Saraswati", category: "Religious" },
-  { id: 4, image: gallery4, title: "Nataraja", category: "Workshop" },
-  { id: 5, image: gallery5, title: "Goddess Lakshmi", category: "Custom" },
-  { id: 6, image: gallery6, title: "Temple Relief", category: "Custom" },
-  { id: 7, image: heroImage, title: "Goddess Durga", category: "Religious" },
-  { id: 8, image: workshopImage, title: "Our Workshop", category: "Workshop" },
-  { id: 9, image: craftsmanImage, title: "Craftsman at Work", category: "Workshop" },
+  { id: 1, image: realGallery1, title: "Marble Statues Collection", category: "Religious" },
+  { id: 2, image: realGallery2, title: "Goddess Sculptures", category: "Religious" },
+  { id: 3, image: realGallery3, title: "Divine Forms", category: "Religious" },
+  { id: 4, image: realGallery4, title: "Custom Creations", category: "Custom" },
+  { id: 5, image: realGallery5, title: "Fibre Sculptures", category: "Custom" },
+  { id: 6, image: realGallery6, title: "Traditional Idols", category: "Religious" },
+  { id: 7, image: realGallery7, title: "Festival Collections", category: "Workshop" },
 ];
 
 const categories = ["All", "Religious", "Custom", "Workshop"];
@@ -53,8 +51,8 @@ const Gallery = () => {
             </h1>
             
             <p className="text-charcoal-foreground/80 text-lg md:text-xl max-w-2xl">
-              A visual journey through our creations—each piece a testament to 
-              devotion, tradition, and the timeless art of sculpture.
+              Authentic images from our workshop and customer reviews—each piece a testament to 
+              55 years of devotion, tradition, and artistry.
             </p>
           </div>
         </div>
@@ -116,8 +114,8 @@ const Gallery = () => {
           {/* Note about sourcing */}
           <div className="mt-16 text-center">
             <p className="text-muted-foreground text-sm italic max-w-lg mx-auto">
-              These images represent the authentic work created in our workshop, 
-              showcasing the raw beauty of traditional craftsmanship.
+              These images are sourced from our business listing and customer reviews, 
+              showcasing authentic work from Devi Shilpalaya, Hill Cart Road, Siliguri.
             </p>
           </div>
         </div>

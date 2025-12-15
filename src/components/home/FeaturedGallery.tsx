@@ -1,35 +1,37 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
+
+// Real images from Devi Shilpalaya
+import realGallery1 from "@/assets/real-gallery-1.jpg";
+import realGallery2 from "@/assets/real-gallery-2.jpg";
+import realGallery3 from "@/assets/real-gallery-3.jpg";
+import realGallery4 from "@/assets/real-gallery-4.jpg";
 
 const featuredWorks = [
   {
     id: 1,
-    image: gallery1,
-    title: "Divine Assembly",
+    image: realGallery1,
+    title: "Marble Statues",
     category: "Religious Sculptures",
   },
   {
     id: 2,
-    image: gallery2,
-    title: "Lord Ganesha",
+    image: realGallery2,
+    title: "Goddess Sculptures",
     category: "Custom Order",
   },
   {
     id: 3,
-    image: gallery3,
-    title: "Goddess Saraswati",
+    image: realGallery3,
+    title: "Divine Collection",
     category: "Fibre Sculpture",
   },
   {
     id: 4,
-    image: gallery4,
-    title: "Nataraja",
-    category: "Workshop Process",
+    image: realGallery4,
+    title: "Festival Idols",
+    category: "Workshop Creations",
   },
 ];
 
@@ -52,8 +54,8 @@ export function FeaturedGallery() {
           </h2>
 
           <p className="text-muted-foreground text-lg">
-            A glimpse into our workshop—where forms emerge from silence 
-            and devotion finds expression in clay and fibre.
+            Authentic images from our workshop—where forms emerge from silence 
+            and devotion finds expression in marble, clay and fibre.
           </p>
         </div>
 

@@ -82,7 +82,7 @@ export function Header() {
             size="sm"
             asChild
           >
-            <a href="tel:+919876543210">
+            <a href="tel:08123789267">
               <Phone className="w-4 h-4" />
               Call Now
             </a>
@@ -126,7 +126,7 @@ export function Header() {
             </Link>
           ))}
           <Button variant="artisan" className="mt-4" asChild>
-            <a href="tel:+919876543210">
+            <a href="tel:08123789267">
               <Phone className="w-4 h-4" />
               Call Now
             </a>
