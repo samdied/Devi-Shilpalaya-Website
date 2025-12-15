@@ -196,7 +196,7 @@ const Contact = () => {
                     type="tel"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="923** *****"
+                    placeholder="+91 9239210987"
                     required
                     className="h-12"
                   />
@@ -254,12 +254,12 @@ const Contact = () => {
       {/* Map Section */}
       <section className="h-96 bg-muted">
       <iframe
-src="https://www.google.com/maps/embed/v1/place?q=Devi%20Shilpalaya&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8>
+src="https://www.google.com/maps/embed/v1/place?q=Devi%20Shilpalaya&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
           width="100%"
           height="100%"
           style={{ border: 0 }}
           allowFullScreen
-          loading="lazy"
+          loading="lazy">
           referrerPolicy="no-referrer-when-downgrade"
           title="Devi Shilpalaya Location - Hill Cart Road, Siliguri"
         />
