@@ -57,8 +57,6 @@ export function IntroSection() {
               presence radiates from every piece that leaves our workshop.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-            </div>
           </div>
         </div>
       </div>
