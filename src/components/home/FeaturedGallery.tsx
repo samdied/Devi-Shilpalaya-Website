@@ -46,17 +46,7 @@ export function FeaturedGallery() {
             <span className="text-primary text-sm tracking-[0.2em] uppercase font-body font-medium">
               Our Creations
             </span>
-            <div className="w-12 h-px bg-primary" />
-          </div>
-
-          <h2 className="font-heading text-4xl md:text-5xl font-semibold text-foreground leading-tight mb-6">
-            Featured <span className="text-primary italic">Sculptures</span>
-          </h2>
-
-          <p className="text-muted-foreground text-lg">
-            Authentic images from our workshop—where forms emerge from silence 
-            and devotion finds expression in marble, clay and fibre.
-          </p>
+            
         </div>
 
         {/* Gallery Grid */}
