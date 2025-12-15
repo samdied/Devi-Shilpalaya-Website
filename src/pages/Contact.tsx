@@ -88,7 +88,7 @@ const Contact = () => {
                     <h3 className="font-heading text-lg font-semibold text-foreground mb-1">
                       Call Us
                     </h3>
-                    <p className="text-muted-foreground">081 2378 9267</p>
+                    <p className="text-muted-foreground">+91 7318732751</p>
                     <p className="text-sm text-muted-foreground/70">Open until 9:00 PM</p>
                   </div>
                 </a>

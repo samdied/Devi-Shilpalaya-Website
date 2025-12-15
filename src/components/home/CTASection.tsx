@@ -30,7 +30,7 @@ export function CTASection() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Button variant="gold" size="lg" asChild>
-              <a href="tel:08123789267">
+              <a href="tel:+91 7318732751">
                 <Phone className="w-5 h-5" />
                 Call Now
               </a>
