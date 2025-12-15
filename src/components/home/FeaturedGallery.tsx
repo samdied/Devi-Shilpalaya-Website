@@ -12,26 +12,26 @@ const featuredWorks = [
   {
     id: 1,
     image: realGallery1,
-    title: "Marble Statues",
-    category: "Religious Sculptures",
+    title: "Religious Sculptures",
+    category: "",
   },
   {
     id: 2,
     image: realGallery2,
-    title: "Goddess Sculptures",
-    category: "Custom Order",
+    title: "Custom Order",
+    category: "",
   },
   {
     id: 3,
     image: realGallery3,
-    title: "Divine Collection",
-    category: "Fibre Sculpture",
+    title: "Fibre Works",
+    category: "",
   },
   {
     id: 4,
     image: realGallery4,
-    title: "Festival Idols",
-    category: "Workshop Creations",
+    title: "Architectures",
+    category: "",
   },
 ];
 
