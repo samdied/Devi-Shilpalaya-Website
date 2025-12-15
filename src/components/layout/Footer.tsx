@@ -28,7 +28,6 @@ export function Footer() {
             <nav className="flex flex-col gap-3">
               {[
                 { name: "Home", path: "/" },
-                { name: "About Us", path: "/about" },
                 { name: "Gallery", path: "/gallery" },
                 { name: "Services", path: "/services" },
                 { name: "Contact", path: "/contact" },
@@ -51,14 +50,14 @@ export function Footer() {
             </h3>
             <div className="flex flex-col gap-4">
               <a
-                href="tel:08123789267"
+                href="tel:+917318732751"
                 className="flex items-center gap-3 text-charcoal-foreground/70 hover:text-accent transition-colors"
               >
                 <Phone className="w-5 h-5 text-accent" />
-                <span>081 2378 9267</span>
+                <span>7318732751</span>
               </a>
               <a
-                href="https://wa.me/918123789267"
+                href="https://wa.me/7318732751"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-charcoal-foreground/70 hover:text-accent transition-colors"

@@ -78,7 +78,7 @@ const Contact = () => {
 
               <div className="space-y-6 mb-12">
                 <a
-                  href="tel:08123789267"
+                  href="tel:+91 7318732751"
                   className="flex items-start gap-4 p-5 bg-secondary/50 rounded-sm hover:bg-secondary transition-colors group"
                 >
                   <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
@@ -94,7 +94,7 @@ const Contact = () => {
                 </a>
 
                 <a
-                  href="https://wa.me/918123789267"
+                  href="https://wa.me/7318732751"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 p-5 bg-secondary/50 rounded-sm hover:bg-secondary transition-colors group"
@@ -147,7 +147,7 @@ const Contact = () => {
               {/* Quick Actions */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button variant="gold" size="lg" asChild className="flex-1">
-                  <a href="tel:08123789267">
+                  <a href="tel:+91 7318732751">
                     <Phone className="w-5 h-5" />
                     Call Now
                   </a>
@@ -196,7 +196,7 @@ const Contact = () => {
                     type="tel"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+91 98765 43210"
+                    placeholder="923** *****"
                     required
                     className="h-12"
                   />

@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
   { name: "Gallery", path: "/gallery" },
   { name: "Services", path: "/services" },
   { name: "Contact", path: "/contact" },
@@ -82,7 +81,7 @@ export function Header() {
             size="sm"
             asChild
           >
-            <a href="tel:08123789267">
+            <a href="tel:+91 7318732751">
               <Phone className="w-4 h-4" />
               Call Now
             </a>
@@ -126,7 +125,7 @@ export function Header() {
             </Link>
           ))}
           <Button variant="artisan" className="mt-4" asChild>
-            <a href="tel:08123789267">
+            <a href="tel:+91 7318732751">
               <Phone className="w-4 h-4" />
               Call Now
             </a>
