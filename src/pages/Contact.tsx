@@ -255,8 +255,8 @@ const Contact = () => {
       <section className="h-96 bg-muted">
       <iframe
 src="https://www.google.com/maps/embed/v1/place?q=Devi%20Shilpalaya&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8
-          width="100%"
-          height="100%"
+          width="100px"
+          height="100px"
           style={{ border: 0 }}
           allowFullScreen
           loading="lazy"
