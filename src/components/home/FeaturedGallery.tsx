@@ -43,9 +43,7 @@ export function FeaturedGallery() {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="w-12 h-px bg-primary" />
-            <span className="text-primary text-sm tracking-[0.2em] uppercase font-body font-medium">
-              Our Creations
-            </span> 
+            <span className="text-primary text-sm tracking-[0.2em] uppercase font-body font-medium">Our Creations</span> 
         </div>
 
         {/* Gallery Grid */}
