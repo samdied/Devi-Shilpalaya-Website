@@ -259,7 +259,7 @@ src="https://www.google.com/maps/embed/v1/place?q=Devi%20Shilpalaya&key=AIzaSyBF
           height="100%"
           style={{ border: 0 }}
           allowFullScreen
-          loading="lazy">
+          loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           title="Devi Shilpalaya Location - Hill Cart Road, Siliguri"
         />
