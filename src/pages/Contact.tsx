@@ -59,7 +59,7 @@ const Contact = () => {
             </h1>
             
             <p className="text-charcoal-foreground/80 text-lg md:text-xl max-w-2xl">
-              Visit our workshop, call us, or send an enquiry. 
+              Visit our workshop at Hill Cart Road, Siliguri, call us, or send an enquiry. 
               Every masterpiece begins with a conversation.
             </p>
           </div>
@@ -78,7 +78,7 @@ const Contact = () => {
 
               <div className="space-y-6 mb-12">
                 <a
-                  href="tel:+919876543210"
+                  href="tel:08123789267"
                   className="flex items-start gap-4 p-5 bg-secondary/50 rounded-sm hover:bg-secondary transition-colors group"
                 >
                   <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
@@ -88,13 +88,15 @@ const Contact = () => {
                     <h3 className="font-heading text-lg font-semibold text-foreground mb-1">
                       Call Us
                     </h3>
-                    <p className="text-muted-foreground">+91 98765 43210</p>
-                    <p className="text-sm text-muted-foreground/70">Available Mon-Sat, 9am-6pm</p>
+                    <p className="text-muted-foreground">081 2378 9267</p>
+                    <p className="text-sm text-muted-foreground/70">Open until 9:00 PM</p>
                   </div>
                 </a>
 
                 <a
-                  href="mailto:info@devishilpalaya.com"
+                  href="https://wa.me/918123789267"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-start gap-4 p-5 bg-secondary/50 rounded-sm hover:bg-secondary transition-colors group"
                 >
                   <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
@@ -102,10 +104,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-heading text-lg font-semibold text-foreground mb-1">
-                      Email Us
+                      WhatsApp
                     </h3>
-                    <p className="text-muted-foreground">info@devishilpalaya.com</p>
-                    <p className="text-sm text-muted-foreground/70">We respond within 24 hours</p>
+                    <p className="text-muted-foreground">Message us directly</p>
+                    <p className="text-sm text-muted-foreground/70">Quick responses guaranteed</p>
                   </div>
                 </a>
 
@@ -118,8 +120,10 @@ const Contact = () => {
                       Visit Our Workshop
                     </h3>
                     <p className="text-muted-foreground">
-                      Sculpture Workshop, Artisan Lane<br />
-                      Hyderabad, Telangana, India
+                      Beside Mahananda Sporting Club,<br />
+                      Old Shiva Mandir, Air View More,<br />
+                      Hill Cart Road, Siliguri - 734001,<br />
+                      West Bengal, India
                     </p>
                   </div>
                 </div>
@@ -133,8 +137,8 @@ const Contact = () => {
                       Working Hours
                     </h3>
                     <p className="text-muted-foreground">
-                      Monday - Saturday: 9:00 AM - 6:00 PM<br />
-                      Sunday: By appointment only
+                      Open Daily: Until 9:00 PM<br />
+                      55 Years in Business
                     </p>
                   </div>
                 </div>
@@ -143,14 +147,14 @@ const Contact = () => {
               {/* Quick Actions */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button variant="gold" size="lg" asChild className="flex-1">
-                  <a href="tel:+919876543210">
+                  <a href="tel:08123789267">
                     <Phone className="w-5 h-5" />
                     Call Now
                   </a>
                 </Button>
                 <Button variant="outline" size="lg" asChild className="flex-1">
                   <a 
-                    href="https://www.google.com/maps/search/Devi+Shilpalaya" 
+                    href="https://www.google.com/maps/search/Devi+Shilpalaya+Hill+Cart+Road+Siliguri" 
                     target="_blank" 
                     rel="noopener noreferrer"
                   >
@@ -250,14 +254,14 @@ const Contact = () => {
       {/* Map Section */}
       <section className="h-96 bg-muted">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.3160tried!2d78.24323!3d17.4123487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.8!2d88.4!3d26.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDQyJzAwLjAiTiA4OMKwMjQnMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
           width="100%"
           height="100%"
           style={{ border: 0 }}
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="Devi Shilpalaya Location"
+          title="Devi Shilpalaya Location - Hill Cart Road, Siliguri"
         />
       </section>
     </Layout>

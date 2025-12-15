@@ -13,9 +13,9 @@ export function Footer() {
               Devi <span className="text-accent">Shilpalaya</span>
             </h2>
             <p className="text-charcoal-foreground/70 max-w-md leading-relaxed mb-6">
-              Where devotion takes form. Handcrafted sculptures created with 
-              traditional techniques, carrying forward generations of artistry 
-              and cultural heritage.
+              Where devotion takes form. Established in 1970, we have been 
+              handcrafting sacred sculptures for over 55 years using traditional 
+              techniques passed down through generations.
             </p>
             <div className="w-20 h-0.5 bg-accent" />
           </div>
@@ -51,25 +51,27 @@ export function Footer() {
             </h3>
             <div className="flex flex-col gap-4">
               <a
-                href="tel:+919876543210"
+                href="tel:08123789267"
                 className="flex items-center gap-3 text-charcoal-foreground/70 hover:text-accent transition-colors"
               >
                 <Phone className="w-5 h-5 text-accent" />
-                <span>+91 98765 43210</span>
+                <span>081 2378 9267</span>
               </a>
               <a
-                href="mailto:info@devishilpalaya.com"
+                href="https://wa.me/918123789267"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 text-charcoal-foreground/70 hover:text-accent transition-colors"
               >
                 <Mail className="w-5 h-5 text-accent" />
-                <span>info@devishilpalaya.com</span>
+                <span>WhatsApp</span>
               </a>
               <div className="flex items-start gap-3 text-charcoal-foreground/70">
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                 <span>
-                  Sculpture Workshop,<br />
-                  Artisan Lane, Hyderabad,<br />
-                  Telangana, India
+                  Beside Mahananda Sporting Club,<br />
+                  Old Shiva Mandir, Hill Cart Road,<br />
+                  Siliguri - 734001, West Bengal
                 </span>
               </div>
             </div>
@@ -82,7 +84,7 @@ export function Footer() {
         <div className="container py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-charcoal-foreground/50">
           <p>© {new Date().getFullYear()} Devi Shilpalaya. All rights reserved.</p>
           <p className="font-heading italic">
-            "Where tradition meets devotion"
+            "55 Years of Sacred Craftsmanship"
           </p>
         </div>
       </div>

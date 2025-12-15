@@ -1,7 +1,7 @@
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-sculpture.jpg";
+import heroImage from "@/assets/real-hero.jpg";
 
 export function HeroSection() {
   return (
@@ -10,7 +10,7 @@ export function HeroSection() {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Handcrafted Durga sculpture in traditional workshop"
+          alt="Beautiful Durga idol sculpture from traditional workshop"
           className="w-full h-full object-cover animate-slow-zoom"
         />
         <div className="absolute inset-0 gradient-hero" />
@@ -23,7 +23,7 @@ export function HeroSection() {
           <div className="flex items-center justify-center gap-4 mb-8 fade-in-up">
             <div className="w-16 h-px bg-accent/50" />
             <span className="text-accent text-sm tracking-[0.3em] uppercase font-body">
-              Est. Since Generations
+              Est. 1970 • 55 Years of Craft
             </span>
             <div className="w-16 h-px bg-accent/50" />
           </div>

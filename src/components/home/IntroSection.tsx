@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import craftsmanImage from "@/assets/craftsman-hands.jpg";
+import realGallery5 from "@/assets/real-gallery-5.jpg";
 
 export function IntroSection() {
   return (
@@ -11,8 +11,8 @@ export function IntroSection() {
           <div className="relative order-2 lg:order-1">
             <div className="relative image-hover rounded-sm overflow-hidden shadow-elevated">
               <img
-                src={craftsmanImage}
-                alt="Master craftsman shaping a clay sculpture"
+                src={realGallery5}
+                alt="Fibre sculptures at Devi Shilpalaya workshop"
                 className="w-full aspect-square object-cover"
               />
               {/* Decorative corner */}
@@ -23,7 +23,7 @@ export function IntroSection() {
             {/* Experience badge */}
             <div className="absolute -bottom-6 -right-6 md:bottom-8 md:-right-8 bg-charcoal text-charcoal-foreground p-6 md:p-8 rounded-sm shadow-elevated">
               <div className="text-center">
-                <span className="block font-heading text-4xl md:text-5xl font-bold text-accent">25+</span>
+                <span className="block font-heading text-4xl md:text-5xl font-bold text-accent">55</span>
                 <span className="text-sm tracking-wider uppercase">Years of Craft</span>
               </div>
             </div>
@@ -44,17 +44,17 @@ export function IntroSection() {
             </h2>
 
             <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-              At Devi Shilpalaya, every sculpture begins with a prayer and ends 
-              with a blessing. Our artisans carry forward ancient techniques 
-              passed down through generations, transforming raw clay and fibre 
-              into divine manifestations.
+              Established in 1970, Devi Shilpalaya has been crafting divine 
+              sculptures for over five decades. Located at Hill Cart Road, 
+              Siliguri, our workshop carries forward ancient techniques 
+              passed down through generations.
             </p>
 
             <p className="text-muted-foreground leading-relaxed mb-8">
-              We don't merely create statues—we breathe life into stone, clay, 
-              and fibre. Each curve, each expression, each ornament is crafted 
-              with devotion, ensuring that the divine presence radiates from 
-              every piece that leaves our workshop.
+              We specialize in fibre statues, marble sculptures, clay idols, 
+              and custom religious sculptures. Each curve, each expression, 
+              each ornament is crafted with devotion, ensuring that the divine 
+              presence radiates from every piece that leaves our workshop.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">

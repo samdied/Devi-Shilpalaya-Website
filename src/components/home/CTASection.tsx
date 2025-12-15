@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone, MapPin } from "lucide-react";
-import workshopImage from "@/assets/workshop.jpg";
+import realGallery6 from "@/assets/real-gallery-6.jpg";
 
 export function CTASection() {
   return (
@@ -9,8 +9,8 @@ export function CTASection() {
       {/* Background */}
       <div className="absolute inset-0">
         <img
-          src={workshopImage}
-          alt="Our sculpture workshop"
+          src={realGallery6}
+          alt="Traditional idol sculpture"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-charcoal/80" />
@@ -24,20 +24,20 @@ export function CTASection() {
           </h2>
 
           <p className="text-charcoal-foreground/80 text-lg md:text-xl mb-10 max-w-xl mx-auto">
-            Visit our workshop or connect with us to discuss your vision. 
-            Every masterpiece begins with a conversation.
+            Visit our workshop at Hill Cart Road, Siliguri or call us 
+            to discuss your vision. 55 years of craftsmanship at your service.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Button variant="gold" size="lg" asChild>
-              <a href="tel:+919876543210">
+              <a href="tel:08123789267">
                 <Phone className="w-5 h-5" />
                 Call Now
               </a>
             </Button>
             <Button variant="hero" size="lg" asChild>
               <a 
-                href="https://www.google.com/maps/search/Devi+Shilpalaya" 
+                href="https://www.google.com/maps/search/Devi+Shilpalaya+Hill+Cart+Road+Siliguri" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
