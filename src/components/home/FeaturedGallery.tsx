@@ -45,8 +45,7 @@ export function FeaturedGallery() {
             <div className="w-12 h-px bg-primary" />
             <span className="text-primary text-sm tracking-[0.2em] uppercase font-body font-medium">
               Our Creations
-            </span>
-            
+            </span> 
         </div>
 
         {/* Gallery Grid */}
