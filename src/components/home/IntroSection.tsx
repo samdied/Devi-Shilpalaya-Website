@@ -58,9 +58,6 @@ export function IntroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="artisan" size="lg" asChild>
-                <Link to="/about">Discover Our Story</Link>
-              </Button>
             </div>
           </div>
         </div>
