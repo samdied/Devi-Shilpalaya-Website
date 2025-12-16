@@ -57,20 +57,17 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-4">
           {navLinks.map((link) => (
-            <Link
+            <Button
               key={link.path}
-              to={link.path}
-              className={cn(
-                "font-body text-sm tracking-wide link-underline transition-colors duration-300",
-                location.pathname === link.path
-                  ? isScrolled ? "text-primary" : "text-accent"
-                  : isScrolled ? "text-foreground hover:text-primary" : "text-cream/80 hover:text-cream"
-              )}
+              variant={location.pathname === link.path ? "hero" : "gold"}
+              size="sm"
+              asChild
+              className="transition-colors duration-300"
             >
-              {link.name}
-            </Link>
+              <Link to={link.path}>{link.name}</Link>
+            </Button>
           ))}
         </nav>
 
