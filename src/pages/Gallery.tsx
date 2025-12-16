@@ -17,7 +17,7 @@ const galleryItems = [
   { id: 2, image: realGallery2, title: "Goddess Sculptures", category: "Religious" },
   { id: 3, image: realGallery3, title: "Divine Forms", category: "Religious" },
   { id: 4, image: realGallery4, title: "Custom Creations", category: "Custom" },
-  { id: 5, image: realGallery5, title: "Fibre Sculptures", category: "Custom" },
+  { id: 5, image: realGallery5, title: "Fibre Sculptures", category: "Architectures" },
   { id: 6, image: realGallery6, title: "Traditional Idols", category: "Religious" },
   { id: 7, image: realGallery7, title: "Festival Collections", category: "Workshop" },
 ];
