@@ -34,7 +34,7 @@ export function Header() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         isScrolled
           ? "bg-background/95 backdrop-blur-md shadow-soft py-3"
-          : "bg-background/30 backdrop-blur-sm py-5 lg:bg-transparent lg:backdrop-blur-none"
+          : "bg-background/0 backdrop-blur-sm py-5 lg:bg-transparent lg:backdrop-blur-none"
       )}
     >
       <div className="container flex items-center justify-between">
