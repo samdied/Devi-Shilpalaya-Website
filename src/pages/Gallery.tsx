@@ -9,8 +9,8 @@ import realGallery2 from "@/assets/real-gallery-2.jpg";
 import realGallery3 from "@/assets/real-gallery-3.jpg";
 import realGallery4 from "@/assets/real-gallery-4.jpg";
 import realGallery5 from "@/assets/real-gallery-5.jpg";
-import realGallery8 from "@/assets/real-gallery-6.jpg";
-import realGallery9 from "@/assets/real-gallery-7.jpg";
+import realGallery6 from "@/assets/real-gallery-8.jpg";
+import realGallery7 from "@/assets/real-gallery-9.jpg";
 
 const galleryItems = [
   { id: 1, image: realGallery1, title: "Marble Statues Collection", category: "Religious" },
