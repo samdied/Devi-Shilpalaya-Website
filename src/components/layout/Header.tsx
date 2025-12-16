@@ -77,7 +77,7 @@ export function Header() {
         {/* CTA Button */}
         <div className="hidden lg:block">
           <Button 
-            variant={isScrolled ? "artisan" : "hero"} 
+            variant={isScrolled ? "gold" : "hero"} 
             size="sm"
             asChild
           >
