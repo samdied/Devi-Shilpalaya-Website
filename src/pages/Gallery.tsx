@@ -22,7 +22,7 @@ const galleryItems = [
   { id: 7, image: realGallery7, title: "Festival Collections", category: "Workshop" },
 ];
 
-const categories = ["All", "Religious", "Custom", "Workshop"];
+const categories = ["All", "Religious", "Custom", "Architectures", "Workshop"];
 
 const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState("All");
