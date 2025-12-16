@@ -43,7 +43,11 @@ export function FeaturedGallery() {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="w-12 h-px bg-primary" />
-            <span className="text-primary text-sm tracking-[0.2em] uppercase font-body font-medium">Our Creations</span> 
+            <span className="text-primary text-sm tracking-[0.2em] uppercase font-body font-medium">
+              Our Creations
+            </span>
+            <div className="w-12 h-px bg-primary" />
+          </div>
         </div>
 
         {/* Gallery Grid */}
@@ -62,7 +66,7 @@ export function FeaturedGallery() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              
+
               {/* Overlay */}
               <div className="absolute inset-0 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
                 <div className="p-6 text-charcoal-foreground">
@@ -81,7 +85,7 @@ export function FeaturedGallery() {
         {/* CTA */}
         <div className="text-center mt-12">
           <Button variant="outline" size="lg" asChild>
-            <Link to="/gallery" className="group">
+            <Link to="/gallery" className="group inline-flex items-center gap-2">
               View Full Gallery
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
