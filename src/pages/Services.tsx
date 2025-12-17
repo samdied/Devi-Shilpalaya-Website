@@ -2,7 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Check, Palette, Hammer, Sparkles, Users, Ruler, Clock } from "lucide-react";
-import gallery5 from "@/assets/gallery-5.jpg";
+import gallery5 from "@/assets/custom-Swami-Vivekananda.jpg";
 
 const services = [
   {
