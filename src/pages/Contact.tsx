@@ -17,11 +17,12 @@ const Contact = () => {
     message: "",
   });
 
+  const MAPS_LINK = "https://maps.app.goo.gl/anbpWLcVfnxZcqUu7";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1000));
     
     toast({
@@ -78,7 +79,7 @@ const Contact = () => {
 
               <div className="space-y-6 mb-12">
                 <a
-                  href="tel:+91 7318732751"
+                  href="tel:+917318732751"
                   className="flex items-start gap-4 p-5 bg-secondary/50 rounded-sm hover:bg-secondary transition-colors group"
                 >
                   <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
@@ -111,22 +112,28 @@ const Contact = () => {
                   </div>
                 </a>
 
-                <div className="flex items-start gap-4 p-5 bg-secondary/50 rounded-sm">
-                  <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+                {/* Linked Address Card */}
+                <a
+                  href={MAPS_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 p-5 bg-secondary/50 rounded-sm hover:bg-secondary transition-colors group"
+                >
+                  <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                     <MapPin className="w-5 h-5 text-primary" />
                   </div>
                   <div>
                     <h3 className="font-heading text-lg font-semibold text-foreground mb-1">
                       Visit Our Workshop
                     </h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground group-hover:underline">
                       Beside Mahananda Sporting Club,<br />
                       Old Shiva Mandir, Air View More,<br />
                       Hill Cart Road, Siliguri - 734001,<br />
                       West Bengal, India
                     </p>
                   </div>
-                </div>
+                </a>
 
                 <div className="flex items-start gap-4 p-5 bg-secondary/50 rounded-sm">
                   <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -147,14 +154,14 @@ const Contact = () => {
               {/* Quick Actions */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button variant="gold" size="lg" asChild className="flex-1">
-                  <a href="tel:+91 7318732751">
+                  <a href="tel:+917318732751">
                     <Phone className="w-5 h-5" />
                     Call Now
                   </a>
                 </Button>
                 <Button variant="outline" size="lg" asChild className="flex-1">
                   <a 
-                    href="https://www.google.com/maps/search/Devi+Shilpalaya+Hill+Cart+Road+Siliguri" 
+                    href={MAPS_LINK} 
                     target="_blank" 
                     rel="noopener noreferrer"
                   >
@@ -253,8 +260,8 @@ const Contact = () => {
 
       {/* Map Section */}
       <section className="h-96 bg-muted">
-      <iframe
-src="https://www.google.com/maps/embed/v1/place?q=Devi%20Shilpalaya&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+        <iframe
+          src="https://www.google.com/maps/embed/v1/place?q=Devi%20Shilpalaya&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
           width="100%"
           height="100%"
           style={{ border: 0 }}
