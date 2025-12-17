@@ -4,6 +4,8 @@ import { Phone, MapPin } from "lucide-react";
 import realGallery6 from "@/assets/Workshop.jpg";
 
 export function CTASection() {
+  const MAPS_LINK = "https://maps.app.goo.gl/anbpWLcVfnxZcqUu7";
+
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
       {/* Background */}
@@ -30,14 +32,14 @@ export function CTASection() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Button variant="gold" size="lg" asChild>
-              <a href="tel:+91 7318732751">
+              <a href="tel:+917318732751">
                 <Phone className="w-5 h-5" />
                 Call Now
               </a>
             </Button>
             <Button variant="hero" size="lg" asChild>
               <a 
-                href="https://www.google.com/maps/search/Devi+Shilpalaya+Hill+Cart+Road+Siliguri" 
+                href={MAPS_LINK} 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
