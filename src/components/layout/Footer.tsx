@@ -65,14 +65,21 @@ export function Footer() {
                 <Mail className="w-5 h-5 text-accent" />
                 <span>WhatsApp</span>
               </a>
-              <div className="flex items-start gap-3 text-charcoal-foreground/70">
+              
+              {/* Linked Address Section */}
+              <a 
+                href="https://maps.app.goo.gl/anbpWLcVfnxZcqUu7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 text-charcoal-foreground/70 hover:text-accent transition-colors group"
+              >
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span>
+                <span className="group-hover:underline">
                   Beside Mahananda Sporting Club,<br />
                   Old Shiva Mandir, Hill Cart Road,<br />
                   Siliguri - 734001, West Bengal
                 </span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
