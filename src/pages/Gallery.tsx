@@ -9,35 +9,24 @@ const imageModules = import.meta.glob("@/assets/*.{png,jpg,jpeg,webp}", {
   import: "default",
 });
 
-// 2. Define the allowed categories (matching your filename prefixes)
+// 2. Define the allowed categories
 const CATEGORIES = ["Religious", "Custom", "Architecture", "Workshop"];
 
-// 3. Process images and extract category/title from filename
+// 3. Process images and extract category ONLY
 const autoGalleryItems = Object.entries(imageModules).map(([path, url], index) => {
-  const fileName = path.split('/').pop()?.split('.')[0] || ""; // e.g., "religious-marble-statue"
-  
-  // Split by the first hyphen
+  const fileName = path.split('/').pop()?.split('.')[0] || ""; 
   const parts = fileName.split('-');
-  let category = "Religious"; // Fallback category
-  let titleParts = parts;
-
-  // Check if the first word of the filename matches one of our categories
+  
+  let category = "Religious"; // Fallback
   const potentialCategory = parts[0].charAt(0).toUpperCase() + parts[0].slice(1).toLowerCase();
   
   if (CATEGORIES.includes(potentialCategory)) {
     category = potentialCategory;
-    titleParts = parts.slice(1); // Remove the category prefix from the title
   }
-
-  // Format the title (capitalize words, remove hyphens)
-  const title = titleParts
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ') || "";
 
   return {
     id: index,
     image: url as string,
-    title: title,
     category: category,
   };
 });
@@ -92,12 +81,13 @@ const Gallery = () => {
               >
                 <img
                   src={item.image}
-                  alt={item.title}
+                  alt={item.category}
                   className="w-full transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
-                  <p className="text-accent text-xs font-bold uppercase tracking-tighter">{item.category}</p>
-                  <h3 className="text-white font-heading text-lg">{item.title}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+                  <p className="text-white text-xs font-bold uppercase tracking-widest bg-accent/80 w-fit px-2 py-1 rounded">
+                    {item.category}
+                  </p>
                 </div>
               </div>
             ))}
@@ -105,11 +95,11 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Lightbox (Simplified) */}
+      {/* Lightbox */}
       {selectedImage && (
         <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4" onClick={() => setSelectedImage(null)}>
           <button className="absolute top-5 right-5 text-white"><X size={32} /></button>
-          <img src={selectedImage.image} className="max-w-full max-h-[90vh] object-contain" alt={selectedImage.title} />
+          <img src={selectedImage.image} className="max-w-full max-h-[90vh] object-contain" alt="Gallery preview" />
         </div>
       )}
     </Layout>
