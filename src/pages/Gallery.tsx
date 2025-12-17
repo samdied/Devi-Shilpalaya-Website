@@ -10,7 +10,7 @@ const imageModules = import.meta.glob("@/assets/*.{png,jpg,jpeg,webp}", {
 });
 
 // 2. Define the allowed categories (matching your filename prefixes)
-const CATEGORIES = ["Religious", "Custom", "Architectures", "Workshop"];
+const CATEGORIES = ["Religious", "Custom", "Architecture", "Workshop"];
 
 // 3. Process images and extract category/title from filename
 const autoGalleryItems = Object.entries(imageModules).map(([path, url], index) => {
