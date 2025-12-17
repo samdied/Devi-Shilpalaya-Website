@@ -61,7 +61,7 @@ export function Header() {
           {navLinks.map((link) => (
             <Button
               key={link.path}
-              variant={location.pathname === link.path ? "gold" : "artisan"}
+              variant={location.pathname === link.path ? "artisan" : "hero"}
               size="sm"
               asChild
               className="transition-colors duration-300"
@@ -74,7 +74,7 @@ export function Header() {
         {/* CTA Button */}
         <div className="hidden lg:block">
           <Button 
-            variant={isScrolled ? "gold" : "hero"} 
+            variant={isScrolled ? "artisan" : "hero"} 
             size="sm"
             asChild
           >
