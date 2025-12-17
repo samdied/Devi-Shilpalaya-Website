@@ -12,25 +12,25 @@ const featuredWorks = [
   {
     id: 1,
     image: realGallery1,
-    title: "Religious Sculptures",
+    title: "RELIGIOUS SCULPTURES",
     category: "",
   },
   {
     id: 2,
     image: realGallery2,
-    title: "Custom Order",
+    title: "CUSTOM ORDER",
     category: "",
   },
   {
     id: 3,
     image: realGallery3,
-    title: "Fibre Works",
+    title: "FIBRE WORKS",
     category: "",
   },
   {
     id: 4,
     image: realGallery4,
-    title: "Architectures",
+    title: "ARCHITECTURES",
     category: "",
   },
 ];
