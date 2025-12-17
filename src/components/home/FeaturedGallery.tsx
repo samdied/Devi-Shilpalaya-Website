@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 import realGallery1 from "@/assets/Religious-Goddess-Durga.jpg";
 import realGallery2 from "@/assets/Custom-Swami-Vivekananda.jpg";
 import realGallery3 from "@/assets/Custom-Statues.jpg";
-import realGallery4 from "@/assets/Architecture-Shangrila-Building.jpg.jpg";
+import realGallery4 from "@/assets/Architecture-Shangrila-Building.jpg";
 
 const featuredWorks = [
   {
