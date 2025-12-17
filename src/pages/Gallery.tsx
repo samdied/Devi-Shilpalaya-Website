@@ -32,7 +32,7 @@ const autoGalleryItems = Object.entries(imageModules).map(([path, url], index) =
   // Format the title (capitalize words, remove hyphens)
   const title = titleParts
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ') || "Sculpture Art";
+    .join(' ') || "";
 
   return {
     id: index,
