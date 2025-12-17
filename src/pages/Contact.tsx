@@ -19,17 +19,30 @@ const Contact = () => {
 
   const MAPS_LINK = "https://maps.app.goo.gl/anbpWLcVfnxZcqUu7";
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // Prepare the email details
+    const recipient = "justsam561@gmail.com";
+    const subject = encodeURIComponent(`New Enquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Phone: ${formData.phone}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Message:\n${formData.message}`
+    );
+
+    // This opens the user's default email application with fields pre-filled
+    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
     
+    // Feedback to user
     toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
+      title: "Email Client Opened",
+      description: "Please click send in your email application.",
     });
     
+    // Reset form and state
     setFormData({ name: "", phone: "", email: "", message: "" });
     setIsSubmitting(false);
   };
@@ -244,7 +257,7 @@ const Contact = () => {
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    "Sending..."
+                    "Opening Mail..."
                   ) : (
                     <>
                       <Send className="w-5 h-5" />
