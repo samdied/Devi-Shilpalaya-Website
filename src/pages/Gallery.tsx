@@ -1,31 +1,48 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// 1. Automatically grab all images from the assets folder
-// This creates an object where keys are paths and values are the image URLs
+// 1. Grab all images from assets
 const imageModules = import.meta.glob("@/assets/*.{png,jpg,jpeg,webp}", {
   eager: true,
   import: "default",
 });
 
-// 2. Transform the object into an array for our gallery
+// 2. Define the allowed categories (matching your filename prefixes)
+const CATEGORIES = ["Religious", "Custom", "Architectures", "Workshop"];
+
+// 3. Process images and extract category/title from filename
 const autoGalleryItems = Object.entries(imageModules).map(([path, url], index) => {
-  // Extract filename to create a title (e.g., "real-gallery-1")
-  const fileName = path.split('/').pop()?.split('.')[0] || "Sculpture";
-  const formattedTitle = fileName.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+  const fileName = path.split('/').pop()?.split('.')[0] || ""; // e.g., "religious-marble-statue"
+  
+  // Split by the first hyphen
+  const parts = fileName.split('-');
+  let category = "Religious"; // Fallback category
+  let titleParts = parts;
+
+  // Check if the first word of the filename matches one of our categories
+  const potentialCategory = parts[0].charAt(0).toUpperCase() + parts[0].slice(1).toLowerCase();
+  
+  if (CATEGORIES.includes(potentialCategory)) {
+    category = potentialCategory;
+    titleParts = parts.slice(1); // Remove the category prefix from the title
+  }
+
+  // Format the title (capitalize words, remove hyphens)
+  const title = titleParts
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ') || "Sculpture Art";
 
   return {
     id: index,
     image: url as string,
-    title: formattedTitle,
-    // Defaulting to "Religious" - you can adjust logic here to assign categories based on filenames
-    category: fileName.includes('custom') ? "Custom" : "Religious",
+    title: title,
+    category: category,
   };
 });
 
-const categories = ["All", "Religious", "Custom", "Architectures", "Workshop"];
+const filterTabs = ["All", ...CATEGORIES];
 
 const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -37,77 +54,53 @@ const Gallery = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-charcoal text-charcoal-foreground">
-        <div className="container">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-px bg-accent" />
-              <span className="text-accent text-sm tracking-[0.2em] uppercase font-body font-medium">
-                Our Work
-              </span>
-            </div>
-            
-            <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight mb-6">
-              Gallery of
-              <span className="block text-accent italic">Sacred Forms</span>
+      <section className="pt-32 pb-16 bg-charcoal text-charcoal-foreground">
+        <div className="container text-center">
+            <h1 className="font-heading text-5xl md:text-6xl font-semibold mb-4">
+              Our <span className="text-accent italic">Masterpieces</span>
             </h1>
-            
-            <p className="text-charcoal-foreground/80 text-lg md:text-xl max-w-2xl">
-              A complete collection of our work directly from our archives—showcasing 
-              55 years of stone and fibre artistry.
+            <p className="text-charcoal-foreground/60 max-w-xl mx-auto">
+              Automatically synchronized with our workshop archives.
             </p>
-          </div>
         </div>
       </section>
 
-      {/* Filter & Gallery */}
-      <section className="py-16 md:py-24 bg-background texture-grain">
+      <section className="py-12 bg-background">
         <div className="container">
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
+          {/* Automatic Category Tabs */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {filterTabs.map((tab) => (
               <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
+                key={tab}
+                onClick={() => setActiveCategory(tab)}
                 className={cn(
-                  "px-6 py-2 font-body text-sm tracking-wide rounded-sm transition-all duration-300",
-                  activeCategory === category
-                    ? "bg-primary text-primary-foreground"
+                  "px-5 py-2 rounded-full text-sm font-medium transition-all",
+                  activeCategory === tab
+                    ? "bg-accent text-white shadow-lg"
                     : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                 )}
               >
-                {category}
+                {tab}
               </button>
             ))}
           </div>
 
-          {/* Masonry Grid */}
+          {/* Grid */}
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
             {filteredItems.map((item) => (
               <div
                 key={item.id}
-                className="break-inside-avoid group cursor-pointer"
+                className="break-inside-avoid group cursor-pointer relative rounded-lg overflow-hidden"
                 onClick={() => setSelectedImage(item)}
               >
-                <div className="relative image-hover rounded-sm overflow-hidden shadow-soft bg-muted">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-auto block"
-                    loading="lazy"
-                  />
-                  
-                  <div className="absolute inset-0 bg-charcoal/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                    <div className="text-charcoal-foreground">
-                      <span className="text-accent text-xs tracking-wider uppercase block mb-1">
-                        {item.category}
-                      </span>
-                      <h3 className="font-heading text-xl font-semibold">
-                        {item.title}
-                      </h3>
-                    </div>
-                  </div>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+                  <p className="text-accent text-xs font-bold uppercase tracking-tighter">{item.category}</p>
+                  <h3 className="text-white font-heading text-lg">{item.title}</h3>
                 </div>
               </div>
             ))}
@@ -115,29 +108,11 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Lightbox */}
+      {/* Lightbox (Simplified) */}
       {selectedImage && (
-        <div 
-          className="fixed inset-0 z-50 bg-charcoal/95 backdrop-blur-sm flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors">
-            <X className="w-8 h-8" />
-          </button>
-          
-          <div className="max-w-5xl w-full flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={selectedImage.image}
-              alt={selectedImage.title}
-              className="max-w-full max-h-[80vh] object-contain rounded-sm"
-            />
-            <div className="mt-4 text-center">
-              <h3 className="font-heading text-2xl font-semibold text-white">
-                {selectedImage.title}
-              </h3>
-              <p className="text-accent uppercase tracking-widest text-sm">{selectedImage.category}</p>
-            </div>
-          </div>
+        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4" onClick={() => setSelectedImage(null)}>
+          <button className="absolute top-5 right-5 text-white"><X size={32} /></button>
+          <img src={selectedImage.image} className="max-w-full max-h-[90vh] object-contain" alt={selectedImage.title} />
         </div>
       )}
     </Layout>
