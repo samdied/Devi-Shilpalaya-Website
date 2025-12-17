@@ -1,36 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Real images from Devi Shilpalaya's JustDial listing
-import realGallery1 from "@/assets/real-gallery-1.jpg";
-import realGallery2 from "@/assets/real-gallery-2.jpg";
-import realGallery3 from "@/assets/real-gallery-3.jpg";
-import realGallery4 from "@/assets/real-gallery-4.jpg";
-import realGallery5 from "@/assets/real-gallery-5.jpg";
-import realGallery6 from "@/assets/real-gallery-8.jpg";
-import realGallery7 from "@/assets/real-gallery-9.jpg";
+// 1. Automatically grab all images from the assets folder
+// This creates an object where keys are paths and values are the image URLs
+const imageModules = import.meta.glob("@/assets/*.{png,jpg,jpeg,webp}", {
+  eager: true,
+  import: "default",
+});
 
-const galleryItems = [
-  { id: 1, image: realGallery1, title: "Marble Statues Collection", category: "Religious" },
-  { id: 2, image: realGallery2, title: "Goddess Sculptures", category: "Religious" },
-  { id: 3, image: realGallery3, title: "Divine Forms", category: "Religious" },
-  { id: 4, image: realGallery4, title: "Custom Creations", category: "Custom" },
-  { id: 5, image: realGallery5, title: "Fibre Sculptures", category: "Architectures" },
-  { id: 6, image: realGallery6, title: "Traditional Idols", category: "Religious" },
-  { id: 7, image: realGallery7, title: "Festival Collections", category: "Workshop" },
-];
+// 2. Transform the object into an array for our gallery
+const autoGalleryItems = Object.entries(imageModules).map(([path, url], index) => {
+  // Extract filename to create a title (e.g., "real-gallery-1")
+  const fileName = path.split('/').pop()?.split('.')[0] || "Sculpture";
+  const formattedTitle = fileName.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+
+  return {
+    id: index,
+    image: url as string,
+    title: formattedTitle,
+    // Defaulting to "Religious" - you can adjust logic here to assign categories based on filenames
+    category: fileName.includes('custom') ? "Custom" : "Religious",
+  };
+});
 
 const categories = ["All", "Religious", "Custom", "Architectures", "Workshop"];
 
 const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedImage, setSelectedImage] = useState<typeof galleryItems[0] | null>(null);
+  const [selectedImage, setSelectedImage] = useState<typeof autoGalleryItems[0] | null>(null);
 
   const filteredItems = activeCategory === "All"
-    ? galleryItems
-    : galleryItems.filter((item) => item.category === activeCategory);
+    ? autoGalleryItems
+    : autoGalleryItems.filter((item) => item.category === activeCategory);
 
   return (
     <Layout>
@@ -51,8 +54,8 @@ const Gallery = () => {
             </h1>
             
             <p className="text-charcoal-foreground/80 text-lg md:text-xl max-w-2xl">
-              Authentic images from our workshop and customer reviews—each piece a testament to 
-              55 years of devotion, tradition, and artistry.
+              A complete collection of our work directly from our archives—showcasing 
+              55 years of stone and fibre artistry.
             </p>
           </div>
         </div>
@@ -81,21 +84,20 @@ const Gallery = () => {
 
           {/* Masonry Grid */}
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-            {filteredItems.map((item, index) => (
+            {filteredItems.map((item) => (
               <div
                 key={item.id}
                 className="break-inside-avoid group cursor-pointer"
                 onClick={() => setSelectedImage(item)}
               >
-                <div className="relative image-hover rounded-sm overflow-hidden shadow-soft">
+                <div className="relative image-hover rounded-sm overflow-hidden shadow-soft bg-muted">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full"
+                    className="w-full h-auto block"
                     loading="lazy"
                   />
                   
-                  {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-charcoal/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
                     <div className="text-charcoal-foreground">
                       <span className="text-accent text-xs tracking-wider uppercase block mb-1">
@@ -110,47 +112,30 @@ const Gallery = () => {
               </div>
             ))}
           </div>
-
-          {/* Note about sourcing */}
-          <div className="mt-16 text-center">
-            <p className="text-muted-foreground text-sm italic max-w-lg mx-auto">
-              These images are sourced from our business listing and customer reviews, 
-              showcasing authentic work from Devi Shilpalaya, Hill Cart Road, Siliguri.
-            </p>
-          </div>
         </div>
       </section>
 
       {/* Lightbox */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 z-50 bg-charcoal/95 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-charcoal/95 backdrop-blur-sm flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
-          <button
-            className="absolute top-6 right-6 text-charcoal-foreground/70 hover:text-charcoal-foreground transition-colors"
-            onClick={() => setSelectedImage(null)}
-            aria-label="Close lightbox"
-          >
+          <button className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors">
             <X className="w-8 h-8" />
           </button>
           
-          <div 
-            className="max-w-5xl max-h-[85vh] relative"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="max-w-5xl w-full flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
             <img
               src={selectedImage.image}
               alt={selectedImage.title}
-              className="max-w-full max-h-[85vh] object-contain rounded-sm"
+              className="max-w-full max-h-[80vh] object-contain rounded-sm"
             />
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-charcoal/90 to-transparent">
-              <span className="text-accent text-xs tracking-wider uppercase block mb-1">
-                {selectedImage.category}
-              </span>
-              <h3 className="font-heading text-2xl font-semibold text-charcoal-foreground">
+            <div className="mt-4 text-center">
+              <h3 className="font-heading text-2xl font-semibold text-white">
                 {selectedImage.title}
               </h3>
+              <p className="text-accent uppercase tracking-widest text-sm">{selectedImage.category}</p>
             </div>
           </div>
         </div>
