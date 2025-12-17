@@ -84,7 +84,7 @@ export function FeaturedGallery() {
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <Button variant="outline" size="lg" asChild>
+          <Button variant="artisan" size="lg" asChild>
             <Link to="/gallery" className="group inline-flex items-center gap-2">
               View Full Gallery
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
