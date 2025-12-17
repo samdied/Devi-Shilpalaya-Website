@@ -179,7 +179,7 @@ const Services = () => {
               <div className="image-hover rounded-sm overflow-hidden shadow-elevated">
                 <img
                   src={gallery5}
-                  alt="Finished Lakshmi sculpture"
+                  alt="Swami Vivekananda"
                   className="w-full aspect-square object-cover"
                 />
               </div>
