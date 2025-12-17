@@ -59,9 +59,6 @@ const Gallery = () => {
             <h1 className="font-heading text-5xl md:text-6xl font-semibold mb-4">
               Our <span className="text-accent italic">Masterpieces</span>
             </h1>
-            <p className="text-charcoal-foreground/60 max-w-xl mx-auto">
-              Automatically synchronized with our workshop archives.
-            </p>
         </div>
       </section>
 
