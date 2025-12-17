@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import realGallery8 from "@/assets/real-gallery-8.jpg";
+import realGallery8 from "@/assets/Workshop-Sculpting.jpg";
 
 export function IntroSection() {
   return (
