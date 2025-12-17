@@ -61,7 +61,7 @@ export function Header() {
           {navLinks.map((link) => (
             <Button
               key={link.path}
-              variant={location.pathname === link.path ? "hero" : "gold"}
+              variant={location.pathname === link.path ? "gold" : "artisan"}
               size="sm"
               asChild
               className="transition-colors duration-300"
