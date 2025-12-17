@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone, MapPin } from "lucide-react";
-import realGallery6 from "@/assets/real-gallery-9.jpg";
+import realGallery6 from "@/assets/Workshop.jpg";
 
 export function CTASection() {
   return (
