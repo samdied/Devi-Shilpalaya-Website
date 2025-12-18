@@ -12,10 +12,11 @@ const imageModules = import.meta.glob("@/assets/*.{png,jpg,jpeg,webp}", {
 // 2. Define the allowed categories
 const CATEGORIES = ["Religious", "Custom", "Architecture", "Workshop"];
 
-// 3. Process images and extract category ONLY
+// 3. Process images and extract category + filename for specific filtering
 const autoGalleryItems = Object.entries(imageModules).map(([path, url], index) => {
-  const fileName = path.split('/').pop()?.split('.')[0] || ""; 
-  const parts = fileName.split('-');
+  const fileName = path.split('/').pop() || ""; // Includes extension e.g. "Workshop-Sculpting.jpg"
+  const nameWithoutExt = fileName.split('.')[0];
+  const parts = nameWithoutExt.split('-');
   
   let category = "Religious"; // Fallback
   const potentialCategory = parts[0].charAt(0).toUpperCase() + parts[0].slice(1).toLowerCase();
@@ -28,6 +29,7 @@ const autoGalleryItems = Object.entries(imageModules).map(([path, url], index) =
     id: index,
     image: url as string,
     category: category,
+    fileName: fileName, // Saved for exact matching logic
   };
 });
 
@@ -37,8 +39,22 @@ const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedImage, setSelectedImage] = useState<typeof autoGalleryItems[0] | null>(null);
 
+  // 4. Custom Filter Logic
   const filteredItems = activeCategory === "All"
     ? autoGalleryItems
+        .filter((item) => {
+          // Hide "Workshop" category unless it's the specific Sculpting file
+          if (item.category === "Workshop") {
+            return item.fileName === "Workshop-Sculpting.jpg";
+          }
+          return true;
+        })
+        .sort((a, b) => {
+          // Force Workshop-Sculpting.jpg to the top (index 0)
+          if (a.fileName === "Workshop-Sculpting.jpg") return -1;
+          if (b.fileName === "Workshop-Sculpting.jpg") return 1;
+          return 0;
+        })
     : autoGalleryItems.filter((item) => item.category === activeCategory);
 
   return (
@@ -97,9 +113,18 @@ const Gallery = () => {
 
       {/* Lightbox */}
       {selectedImage && (
-        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4" onClick={() => setSelectedImage(null)}>
-          <button className="absolute top-5 right-5 text-white"><X size={32} /></button>
-          <img src={selectedImage.image} className="max-w-full max-h-[90vh] object-contain" alt="Gallery preview" />
+        <div 
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 cursor-zoom-out" 
+          onClick={() => setSelectedImage(null)}
+        >
+          <button className="absolute top-5 right-5 text-white">
+            <X size={32} />
+          </button>
+          <img 
+            src={selectedImage.image} 
+            className="max-w-full max-h-[90vh] object-contain" 
+            alt="Gallery preview" 
+          />
         </div>
       )}
     </Layout>
