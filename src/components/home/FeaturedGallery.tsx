@@ -4,8 +4,8 @@ import { ArrowRight } from "lucide-react";
 
 // Real images from Devi Shilpalaya
 import realGallery1 from "@/assets/Religious-Hanuman-Statue.jpg";
-import realGallery2 from "@/assets/Custom-Swami-Vivekananda.jpg";
-import realGallery3 from "@/assets/Custom-Statues.jpg";
+import realGallery2 from "@/assets/Custom-9.jpg";
+import realGallery3 from "@/assets/Custom-11.jpg";
 import realGallery4 from "@/assets/Architecture-Shangrila-Building.jpg";
 
 const featuredWorks = [
