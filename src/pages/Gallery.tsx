@@ -1,134 +1,130 @@
-import { useState } from "react";
-import { Layout } from "@/components/layout/Layout";
-import { X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import React, { useState, useMemo } from 'react';
 
-// 1. Grab all images from assets
-const imageModules = import.meta.glob("@/assets/*.{png,jpg,jpeg,webp}", {
-  eager: true,
-  import: "default",
-});
+// --- Types ---
+type Category = 'Religious' | 'Custom' | 'Architecture' | 'Workshop';
 
-// 2. Define the allowed categories
-const CATEGORIES = ["Religious", "Custom", "Architecture", "Workshop"];
+interface GalleryImage {
+  id: string | number;
+  src: string;
+  category: Category;
+  alt?: string;
+}
 
-// 3. Process images and extract category + filename for specific filtering
-const autoGalleryItems = Object.entries(imageModules).map(([path, url], index) => {
-  const fileName = path.split('/').pop() || ""; // Includes extension e.g. "Workshop-Sculpting.jpg"
-  const nameWithoutExt = fileName.split('.')[0];
-  const parts = nameWithoutExt.split('-');
-  
-  let category = "Religious"; // Fallback
-  const potentialCategory = parts[0].charAt(0).toUpperCase() + parts[0].slice(1).toLowerCase();
-  
-  if (CATEGORIES.includes(potentialCategory)) {
-    category = potentialCategory;
-  }
+interface GalleryProps {
+  images: GalleryImage[];
+}
 
-  return {
-    id: index,
-    image: url as string,
-    category: category,
-    fileName: fileName, // Saved for exact matching logic
-  };
-});
+const FullGallery: React.FC<GalleryProps> = ({ images }) => {
+  const [activeFilter, setActiveFilter] = useState<'All' | Category>('All');
 
-const filterTabs = ["All", ...CATEGORIES];
+  // --- Core Logic: Sorting and Interleaving ---
+  const displayedImages = useMemo(() => {
+    // 1. If a specific category is selected (not "All"), just filter normally
+    if (activeFilter !== 'All') {
+      return images.filter(img => img.category === activeFilter);
+    }
 
-const Gallery = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedImage, setSelectedImage] = useState<typeof autoGalleryItems[0] | null>(null);
+    // 2. Logic for the "All" category:
+    const categoryOrder: Category[] = ["Religious", "Custom", "Architecture", "Workshop"];
+    
+    // Find the specific image to pin to the top
+    const featured = images.find(img => img.src.includes("Workshop-Sculpting.jpg"));
+    
+    // Get everything else
+    const others = images.filter(img => !img.src.includes("Workshop-Sculpting.jpg"));
 
-  // 4. Custom Filter Logic
-  const filteredItems = activeCategory === "All"
-    ? autoGalleryItems
-        .filter((item) => {
-          // Hide "Workshop" category unless it's the specific Sculpting file
-          if (item.category === "Workshop") {
-            return item.fileName === "Workshop-Sculpting.jpg";
-          }
-          return true;
-        })
-        .sort((a, b) => {
-          // Force Workshop-Sculpting.jpg to the top (index 0)
-          if (a.fileName === "Workshop-Sculpting.jpg") return -1;
-          if (b.fileName === "Workshop-Sculpting.jpg") return 1;
-          return 0;
-        })
-    : autoGalleryItems.filter((item) => item.category === activeCategory);
+    // Group images by category buckets
+    const groups: Record<Category, GalleryImage[]> = {
+      Religious: others.filter(img => img.category === "Religious"),
+      Custom: others.filter(img => img.category === "Custom"),
+      Architecture: others.filter(img => img.category === "Architecture"),
+      Workshop: others.filter(img => img.category === "Workshop"),
+    };
+
+    const interleaved: GalleryImage[] = [];
+    const totalOthers = others.length;
+
+    // Interleave: Religious -> Custom -> Architecture -> Workshop (Repeat)
+    // We use a copy of the groups to avoid mutating the original grouped arrays
+    const groupsCopy = {
+      Religious: [...groups.Religious],
+      Custom: [...groups.Custom],
+      Architecture: [...groups.Architecture],
+      Workshop: [...groups.Workshop]
+    };
+
+    while (interleaved.length < totalOthers) {
+      let addedInThisRound = false;
+      
+      categoryOrder.forEach((cat) => {
+        if (groupsCopy[cat].length > 0) {
+          interleaved.push(groupsCopy[cat].shift()!);
+          addedInThisRound = true;
+        }
+      });
+
+      if (!addedInThisRound) break; // Safety break
+    }
+
+    // Return the featured image at index 0, followed by the interleaved list
+    return featured ? [featured, ...interleaved] : interleaved;
+  }, [images, activeFilter]);
+
+  // --- Handlers ---
+  const categories: ('All' | Category)[] = ['All', 'Religious', 'Custom', 'Architecture', 'Workshop'];
 
   return (
-    <Layout>
-      <section className="pt-32 pb-16 bg-charcoal text-charcoal-foreground">
-        <div className="container text-center">
-            <h1 className="font-heading text-5xl md:text-6xl font-semibold mb-4">
-              Our <span className="text-accent italic">Masterpieces</span>
-            </h1>
-        </div>
-      </section>
-
-      <section className="py-12 bg-background">
-        <div className="container">
-          {/* Automatic Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {filterTabs.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveCategory(tab)}
-                className={cn(
-                  "px-5 py-2 rounded-full text-sm font-medium transition-all",
-                  activeCategory === tab
-                    ? "bg-accent text-white shadow-lg"
-                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                )}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-
-          {/* Grid */}
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-            {filteredItems.map((item) => (
-              <div
-                key={item.id}
-                className="break-inside-avoid group cursor-pointer relative rounded-lg overflow-hidden"
-                onClick={() => setSelectedImage(item)}
-              >
-                <img
-                  src={item.image}
-                  alt={item.category}
-                  className="w-full transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
-                  <p className="text-white text-xs font-bold uppercase tracking-widest bg-accent/80 w-fit px-2 py-1 rounded">
-                    {item.category}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Lightbox */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 cursor-zoom-out" 
-          onClick={() => setSelectedImage(null)}
-        >
-          <button className="absolute top-5 right-5 text-white">
-            <X size={32} />
+    <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
+      {/* Filter Navigation */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '30px' }}>
+        {categories.map(cat => (
+          <button
+            key={cat}
+            onClick={() => setActiveFilter(cat)}
+            style={{
+              padding: '8px 16px',
+              cursor: 'pointer',
+              backgroundColor: activeFilter === cat ? '#333' : '#eee',
+              color: activeFilter === cat ? '#fff' : '#333',
+              border: 'none',
+              borderRadius: '4px',
+              fontWeight: activeFilter === cat ? 'bold' : 'normal'
+            }}
+          >
+            {cat}
           </button>
-          <img 
-            src={selectedImage.image} 
-            className="max-w-full max-h-[90vh] object-contain" 
-            alt="Gallery preview" 
-          />
-        </div>
-      )}
-    </Layout>
+        ))}
+      </div>
+
+      {/* Gallery Grid */}
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
+        gap: '20px' 
+      }}>
+        {displayedImages.map((img) => (
+          <div key={img.id} style={{ overflow: 'hidden', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
+            <img 
+              src={img.src} 
+              alt={img.alt || img.category} 
+              style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }} 
+            />
+            <div style={{ padding: '10px', backgroundColor: '#fff', fontSize: '14px', color: '#666' }}>
+              {img.category} {img.src.includes("Workshop-Sculpting.jpg") && " (Featured)"}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Contact Section */}
+      <footer style={{ marginTop: '50px', textAlign: 'center', borderTop: '1px solid #eee', padding: '20px' }}>
+        <p>For any enquiries, please contact us at:</p>
+        <a href="mailto:justsam561@gmail.com" style={{ color: '#007bff', fontWeight: 'bold', textDecoration: 'none' }}>
+          justsam561@gmail.com
+        </a>
+      </footer>
+    </div>
   );
 };
 
-export default Gallery;
+export default FullGallery;
