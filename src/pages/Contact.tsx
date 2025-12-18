@@ -24,7 +24,7 @@ const Contact = () => {
     setIsSubmitting(true);
     
     // Prepare the email details
-    const recipient = "justsam561@gmail.com";
+    const recipient = "devishilpalaya1970@gmail.com";
     const subject = encodeURIComponent(`New Enquiry from ${formData.name}`);
     const body = encodeURIComponent(
       `Name: ${formData.name}\n` +
